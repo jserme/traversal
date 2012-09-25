@@ -13,6 +13,6 @@ git clone https://github.com/jserme/traversal.git
 var traver = require('./traversal');
 
 traver('path/u/start/to/scan', function(err, file, isFolder){
-    console.log( file );
+    console.log( file, isFolder );
 });
 ```
