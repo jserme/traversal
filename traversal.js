@@ -5,6 +5,7 @@ exec = require('child_process').exec;
 //only find folder one time
 var isScaned = false;
 
+//callback(err, filePath, isFolder)
 function traversal(startPath, callback) {
 	var _startPath = path.resolve(startPath);
 
@@ -15,8 +16,9 @@ function traversal(startPath, callback) {
 		}
 
 		if (stats.isFile()) {
-			callback(null, _startPath);
-
+			callback(null, _startPath, false);
+		} else if (stats.isDirectory()) {
+			callback(null, _startPath, true);
 		} else if (!isScaned && stats.isDirectory()) {
 			var child = exec('find ' + _startPath, function(err, stdout, stderr) {
 				if (err) {

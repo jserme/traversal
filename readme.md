@@ -12,7 +12,7 @@ git clone https://github.com/jserme/traversal.git
 ```javascript
 var traver = require('./traversal');
 
-traver('path/u/start/to/scan', function(err, file){
+traver('path/u/start/to/scan', function(err, file, isFolder){
     console.log( file );
 });
 ```
