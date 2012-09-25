@@ -17,8 +17,6 @@ function traversal(startPath, callback) {
 
 		if (stats.isFile()) {
 			callback(null, _startPath, false);
-		} else if (stats.isDirectory()) {
-			callback(null, _startPath, true);
 		} else if (!isScaned && stats.isDirectory()) {
 			var child = exec('find ' + _startPath, function(err, stdout, stderr) {
 				if (err) {
@@ -38,6 +36,8 @@ function traversal(startPath, callback) {
 
 				child.kill();
 			})
+		} else if (stats.isDirectory()) {
+			callback(null, _startPath, true);
 		}
 	})
 }

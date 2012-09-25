@@ -1,6 +1,6 @@
 var traver = require('./traversal');
 
-traver('./', function(err, file) {
-	console.log(file);
+traver('./', function(err, file, isFolder) {
+	console.log(file, isFolder);
 })
 
